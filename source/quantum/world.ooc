@@ -58,7 +58,6 @@ World: class {
         if (debug) {
             logger info("(quad) #{shapes size} shapes = #{numTests} tests in #{ms}ms")
             quad printStats()
-            //quad drawDebug()
         }
 
         for (b in bodies) {
@@ -179,10 +178,6 @@ World: class {
                     if (info a sensor || info b sensor) {
                         // no collision to be applied there
                         return
-                    }
-
-                    if (info collides) {
-                        Collisions drawArrow(info contact, info normal, Color new(0, 0, 0))
                     }
 
                     if (aReacts && a body != null && info normal y > 0.0) {
@@ -351,18 +346,12 @@ Body: class {
             }
         }
 
-        for (r in reactions) {
-            Collisions drawArrow(pos, r diff, Color new(128, 0, 0))
-        }
-
         // add'em up!
 
         reac := vec2(0, 0)
         for (r in reactions) {
             reac add!(r diff mul(1.0f - COLLISION_EPSILON))
         }
-
-        Collisions drawArrow(pos, reac, Color new(0, 0, 255))
         pos add!(reac)
 
         // now deal with velocity
@@ -735,11 +724,6 @@ AABBShape: class extends Shape {
         i2n := planes[i1] n
         dot1 := n dot(i1n)
         dot2 := n dot(i2n)
-
-        /* mid1 := planes[i0] v0 lerp(planes[i1] v0, 0.5f) */
-        /* mid2 := planes[i1] v0 lerp(planes[i2] v0, 0.5f) */
-        /* Collisions drawArrow(mid1, i1n, Color new(255, 0, 0)) */
-        /* Collisions drawArrow(mid2, i2n, Color new(128, 0, 0)) */
 
         if (dot1 > dot2) {
             return (planes[i0] v0, planes[i1] v0, i1n) as Edge

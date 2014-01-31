@@ -7,4 +7,7 @@ before_install:
 script:
   - export OOC_LIBS=$PWD
   - rock -v
+  - cd samples
+  - mkdir travis
+  - rock -v quadgrav -o=travis/quadgrav && travis/quadgrav
 

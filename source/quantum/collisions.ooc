@@ -62,53 +62,6 @@ __LINE__: extern Int
  */
 Collisions: class {
 
-    debugGroup := static GlGroup new()
-    draws := static true
-
-    // debug stuff
-    drawPoint: static func (pos: Vec2, color: Color) {
-        if (!draws) return
-        r := GlRectangle new(vec2(12, 12))
-        r pos set!(pos)
-        r color set!(color)
-        r opacity = 0.7
-        debugGroup add(r)
-    }
-
-    drawAABB: static func (aabb: AABB2, color: Color) {
-        drawBox(aabb center(), aabb size, color)
-    }
-
-    drawBox: static func (pos: Vec2, size: Vec2, color: Color) {
-        if (!draws) return
-        r := GlRectangle new(size)
-        r pos set!(pos)
-        r color set!(color)
-        r opacity = 0.8
-        r filled = false
-        debugGroup add(r)
-    }
-
-    drawArrow: static func (pos: Vec2, dir: Vec2, color: Color) {
-        if (!draws) return
-        s := GlSprite new("assets/png/arrow.png")
-        s pos set!(pos)
-        s angle = dir angle() toDegrees()
-        s color set!(color)
-        sc := 0.6
-        s scale set!(sc, sc)
-        s opacity = 0.7
-        debugGroup add(s)
-    }
-
-    drawText: static func (pos: Vec2, text: String, color: Color) {
-        if (!draws) return
-        t := GlText new("assets/ttf/DroidSansMono.ttf", text, 12)
-        t pos set!(pos)
-        t color set!(color)
-        debugGroup add(t)
-    }
-
     logger := static Log getLogger(This name)
 
     // write collisions for everything here o/
@@ -206,8 +159,6 @@ Collisions: class {
 
                 aabb1 := ctx shape1 getAABB() add(ctx shape1 getTransform())
                 aabb2 := ctx shape2 getAABB() add(ctx shape2 getTransform())
-                Collisions drawAABB(aabb1, Color new(0, 0, 255))
-                Collisions drawAABB(aabb2, Color new(0, 255, 0))
             }
             return ClosestPoints new(v0, v1)
         }

@@ -283,26 +283,6 @@ Quadtree: class {
         }
     }
 
-    drawDebug: func {
-        _drawDebug(Color new(255, 0, 0))
-    }
-
-    _drawDebug: func (color: Color) {
-        c2 := Color new((color r - 42) % 255, (color g + 30) % 255, (color b + 53) % 255)
-        for (i in 0..4) {
-            n := nodes[i]
-            if (n) {
-                n _drawDebug(c2)
-            }
-        }
-
-        padding := 0.2f * level
-        textpad := 6.0f * level
-
-        Collisions drawBox(bounds center() add(padding, padding), vec2(bounds width - 2.0f * padding, bounds height - 2.0f * padding), color)
-        Collisions drawText(vec2(bounds xMin + textpad, bounds yMin), "#{objects size}", color)
-    }
-
 }
 
 extend AABB2 {
