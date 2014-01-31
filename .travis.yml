@@ -2,11 +2,17 @@ before_install:
   - sudo apt-get -y -q install curl make libgc-dev
   - git clone --depth=1 git://github.com/nddrylliog/rock.git -b 99x
   - git clone git://github.com/nddrylliog/ooc-stb-image.git
-  - git clone git://github.com/nddrylliog/ooc-sdl2.git
+  - git clone git://github.com/geckojsc/ooc-sdl2.git
   - git clone git://github.com/nddrylliog/dye.git
   - git clone git://github.com/fredreichbier/deadlogger.git
   - (cd rock && make -s rescue)
+  - mkdir dummyprefix
+  - export PREFIX=$PWD/dummyprefix
   - export PATH=$PATH:$PWD/rock/bin
+  - export PKG_CONFIG_PATH=$PREFIX/lib/pkgconfig
+  - export PATH=$PATH:$PWD/rock/bin:$PWD/dummyprefix/bin
+  - wget http://libsdl.org/release/SDL2-2.0.1.tar.gz -O - | tar xz
+  - (cd SDL2-2.0.1 && ./configure --prefix=$PREFIX && make -j5 && make install)
 
 script:
   - export OOC_LIBS=$PWD
