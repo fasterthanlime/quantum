@@ -534,7 +534,7 @@ AABBShape: class extends Shape {
     rawPlanes: SplittingPlane*
     count := 4
 
-    init: func ~floats (width, height: Float) {
+    init: func (width, height: Float) {
         super()
         aabb = AABB2 new(width, height)
     }
