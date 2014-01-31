@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/nddrylliog/quantum.png?branch=master)](https://travis-ci.org/nddrylliog/quantum)
+
 ## quantum
 
 Half-assed physics framework in pure ooc, with parts stolen from [Chipmunk2D][chipmunk] all over.
