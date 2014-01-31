@@ -1,7 +1,7 @@
 before_install:
   - sudo apt-get -y -q install curl make libgc-dev
   - git clone --depth=1 git://github.com/nddrylliog/rock.git -b 99x
-  - git clone git://github.com/nddrylliog/stb-image.git
+  - git clone git://github.com/nddrylliog/ooc-stb-image.git
   - git clone git://github.com/nddrylliog/ooc-sdl2.git
   - git clone git://github.com/nddrylliog/dye.git
   - git clone git://github.com/fredreichbier/deadlogger.git
