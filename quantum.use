@@ -1,0 +1,6 @@
+Name: quantum
+Version: 0.1
+Description: ooc physics engine
+SourcePath: source
+Requires: dye, deadlogger
+
