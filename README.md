@@ -16,3 +16,6 @@ With help from:
 
 [chipmunk]: http://chipmunk-physics.net/
 
+## License
+
+quantum is distributed under the MIT license, see `LICENSE` for details.
