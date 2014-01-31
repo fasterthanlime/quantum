@@ -3,7 +3,7 @@
 import quantum/[world, list, collisions]
 
 // third
-import dye/[math, core]
+import dye/[math]
 import deadlogger/[Log, Logger]
 
 // sdk

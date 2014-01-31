@@ -1,7 +1,7 @@
 
 // third-party
 use dye
-import dye/[core, math]
+import dye/[math]
 
 use deadlogger
 import deadlogger/[Log, Logger]
