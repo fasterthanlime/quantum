@@ -24,6 +24,10 @@ World: class {
     debug := false
     info := CollisionInfo new()
 
+    // adjustable
+    gravity := -0.4f
+    maxFallVel := -5.0f
+
     collisionMap := HashMap<Int64, Bool> new()
 
     locked := false
@@ -257,10 +261,6 @@ Body: class {
 
     reactions := ArrayList<CollisionReaction> new()
 
-    // adjustable
-    gravity := static -0.4f
-    maxFallVel := static -5.0f
-
     init: func (=shape) {
         if (!shape) {
             raise("Can't create shapeless body")
@@ -271,10 +271,10 @@ Body: class {
     handleGravityAndFriction: func (delta: Float) {
         if (!variableStep) delta = 1.0f
         if (hasGravity) {
-            if (vel y > maxFallVel) {
-                vel y += gravity * weight * delta
+            if (vel y > world maxFallVel) {
+                vel y += world gravity * weight * delta
             } else {
-                vel y = maxFallVel
+                vel y = world maxFallVel
             }
         }
     }
