@@ -627,7 +627,7 @@ AABBShape: class extends Shape {
         rawPlanes: SplittingPlane*
         planes: SplittingPlane*
 
-        init: func ~vecs (data: Vec2*, =count) {
+        init: func (data: Vec2*, =count) {
             super()
             aabb = AABB2 new()
 
