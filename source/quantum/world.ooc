@@ -34,7 +34,7 @@ World: class {
 
     init: func {
         // trying optimized bounds
-        side := 2048.0f
+        side := 16384.0f
         pad := 256.0f
         goodBounds := AABB2 new(0.0f, 0.0f, side, side)
         goodBounds add!(vec2(-pad, -pad))

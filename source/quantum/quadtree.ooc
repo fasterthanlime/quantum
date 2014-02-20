@@ -19,7 +19,7 @@ Quadtree: class {
 
     debug := static false
     MAX_OBJECTS := static 8
-    MAX_LEVELS := static 12
+    MAX_LEVELS := static 8
 
     level: Int
     objects := ShapeList new()
