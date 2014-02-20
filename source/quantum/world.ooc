@@ -194,9 +194,17 @@ World: class {
 
                     if (info depth != 0.0) {
                         if (aReacts && bReacts) {
-                            a react!(info, 0.5f)
+                            weightA := 0.5f
+                            weightB := 0.5f
+                            if (a body && b body) {
+                                weightTotal := a body weight + b body weight
+                                weightB = a body weight / weightTotal
+                                weightA = b body weight / weightTotal
+                            }
+
+                            a react!(info, weightA)
                             info negate!()
-                            b react!(info, 0.5f)
+                            b react!(info, weightB)
                         } else if (aReacts) {
                             a react!(info, 1.0f)
                         } else if (bReacts) {
@@ -272,7 +280,7 @@ Body: class {
         if (!variableStep) delta = 1.0f
         if (hasGravity) {
             if (vel y > world maxFallVel) {
-                vel y += world gravity * weight * delta
+                vel y += world gravity * delta
             } else {
                 vel y = world maxFallVel
             }
@@ -379,7 +387,7 @@ Body: class {
 
 }
 
-COLLISION_EPSILON := 0.004f
+COLLISION_EPSILON := 0.002f
 
 ShapeGroup: enum from Int {
     NONE
